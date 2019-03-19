@@ -15,4 +15,16 @@ class Probability {
             throw new InvalidProbabilityException("Invalid Probability");
         }
     }
+
+    Probability calculateImprobability() throws InvalidProbabilityException {
+        return new Probability(UPPER_BOUND - this.value);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Probability that = (Probability) o;
+        return Double.compare(that.value, value) == 0;
+    }
 }
