@@ -12,6 +12,7 @@ class ProbabilityTest {
         assertThrows(InvalidProbabilityException.class, () -> new Probability(-0.5D));
     }
 
+    @Test
     void shouldThrowExceptionForValueGreaterThanUpperBound() throws InvalidProbabilityException {
         assertThrows(InvalidProbabilityException.class, () -> new Probability(1.5D));
     }
@@ -25,7 +26,14 @@ class ProbabilityTest {
     void shouldReturnImprobability() throws InvalidProbabilityException {
         Probability probability = new Probability(0.4D);
         Probability expected = new Probability(0.6D);
-        assertEquals(expected, probability.calculateImprobability());
+        assertEquals(expected, probability.not());
     }
 
+    @Test
+    void shouldReturnTheProbabilityWhenTwoCoinsAreFlipped() throws InvalidProbabilityException {
+        Probability probabilityOfFirstCoin = new Probability(0.5);
+        Probability probabilityOfSecondCoin = new Probability(0.5);
+        Probability expected = new Probability(0.25D);
+        assertEquals(expected, probabilityOfFirstCoin.and(probabilityOfSecondCoin));
+    }
 }

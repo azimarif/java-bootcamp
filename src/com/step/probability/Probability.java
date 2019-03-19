@@ -16,15 +16,20 @@ class Probability {
         }
     }
 
-    Probability calculateImprobability() throws InvalidProbabilityException {
+    Probability not() throws InvalidProbabilityException {
         return new Probability(UPPER_BOUND - this.value);
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Probability that = (Probability) o;
+    public boolean equals(Object probability) {
+        if (this == probability) return true;
+        if (probability == null || getClass() != probability.getClass()) return false;
+        Probability that = (Probability) probability;
         return Double.compare(that.value, value) == 0;
+    }
+
+
+    Probability and(Probability secondProbability) throws InvalidProbabilityException {
+        return new Probability(this.value * secondProbability.value);
     }
 }
