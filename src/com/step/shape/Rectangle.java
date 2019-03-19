@@ -1,19 +1,22 @@
 package com.step.shape;
 
-class Rectangle {
+class Rectangle implements Shape {
     private Dimension length;
     private Dimension breadth;
 
-    public Rectangle(Dimension length, Dimension breadth) {
+    Rectangle(Dimension length, Dimension breadth) {
         this.length = length;
         this.breadth = breadth;
     }
 
+    @Override
     public double calculateArea() {
-        return this.length.getValue() * this.breadth.getValue();
+        return length.getValue() * breadth.getValue();
     }
 
+    @Override
     public double calculatePerimeter() {
-        return 2 * (this.length.getValue() + this.breadth.getValue());
+        return 2 * (length.getValue() + breadth.getValue());
+
     }
 }
