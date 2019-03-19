@@ -36,4 +36,12 @@ class ProbabilityTest {
         Probability expected = new Probability(0.25D);
         assertEquals(expected, probabilityOfFirstCoin.and(probabilityOfSecondCoin));
     }
+
+    @Test
+    void shouldReturnTheProbabilityForGettingAtLeastOneTail() throws InvalidProbabilityException {
+        Probability probabilityOfFirstCoin = new Probability(0.5);
+        Probability probabilityOfSecondCoin = new Probability(0.5);
+        Probability expected = new Probability(0.75D);
+        assertEquals(expected, probabilityOfFirstCoin.or(probabilityOfSecondCoin));
+    }
 }
